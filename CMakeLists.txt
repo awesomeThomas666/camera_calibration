@@ -7,15 +7,19 @@ add_compile_options(-std=c++11)
 #   std_msgs
 # )
 #find_package(catkin REQUIRED COMPONENTS  image_transport roscpp cv_bridge sensor_msgs nodelet camera_info_manager roslint)
-find_package(OpenCV REQUIRED)
+SET(OpenCV_DIR "/usr/local/OpenCV3.4.4/share/OpenCV")
+find_package(OpenCV 3.4 REQUIRED)
+find_package(Eigen3 REQUIRED)
 #find_package(Boost REQUIRED COMPONENTS system thread)
 
 
-# include_directories(
-#   include
-#   ${catkin_INCLUDE_DIRS}
-#   ${Boost_INCLUDE_DIRS}
-# )
+include_directories(
+  include
+  ${OpenCV_INCLUDE_DIRS}
+  ${catkin_INCLUDE_DIRS}
+  ${EIGEN3_INCLUDE_DIR}
+  # ${Boost_INCLUDE_DIRS}
+)
 
 add_executable(camera_calibration src/camera_calibration.cpp)
 # add_dependencies(robot_camera_node cv_camera)
